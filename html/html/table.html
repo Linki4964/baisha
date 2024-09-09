@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子信息登记表</title>
+    <link rel="stylesheet" href="css\styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>人员信息登记表</h2>
+    <form action="#" method="POST">
+        <div class="form-group">
+            <label for="fullName">姓名:</label>
+           <input type="text" id="fullName" name="fullName" required> <!-- 如果没有输入姓名就会弹出警告--->
+        </div>
+        
+        <div class="form-group radio-group">
+            <label>性别:</label>
+            <label for="male"><input type="radio" id="male" name="gender" value="男" required> 男</label>
+            <label for="female"><input type="radio" id="female" name="gender" value="女" required> 女</label>
+        </div>
+        
+        <div class="form-group">
+            <label for="birthDate">出生日期:</label>
+            <input type="date" id="birthDate" name="birthDate" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="age">年龄:</label>
+            <input type="number" id="age" name="age" readonly>
+        </div>
+        <script>
+            document.getElementById('birthDate').addEventListener('change', function() {
+                const birthDate = new Date(this.value);
+                const today = new Date();
+                let age = today.getFullYear() - birthDate.getFullYear();
+                const monthDiff = today.getMonth() - birthDate.getMonth();
+        
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+        
+                document.getElementById('age').value = age;
+            });
+        </script>
+        <div class="form-group">
+            <label for="birthplace">籍贯:</label>
+            <input type="text" id="birthplace" name="birthplace" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="ethnicity">民族:</label>
+            <input type="text" id="ethnicity" name="ethnicity" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="address">家庭住址:</label>
+            <input type="text" id="address" name="address" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="school">现读学校:</label>
+            <input type="text" id="school" name="school">
+        </div>
+        
+        <div class="form-group">
+            <label for="educationStatus">学业状态:</label>
+            <select id="educationStatus" name="educationStatus" required>
+                <option value="辍学">辍学</option>
+                <option value="失学">失学</option>
+                <option value="毕业">毕业</option>
+                <option value="逃学">逃学</option>
+            </select>
+        </div>    
+         <!-- 监护人信息 -->
+         <div class="form-group">
+            <label>监护人:</label>
+            <div id="guardian-container">
+                <!-- 初始的监护人信息 -->
+                <div class="guardian-group">
+                    <input type="text" name="guardian_name[]" placeholder="姓名">
+                    <input type="text" name="guardian_phone[]" placeholder="电话">
+                    <input type="text" name="guardian_relation[]" placeholder="关系">
+                    <input type="text" name="guardian_occupation[]" placeholder="职业">
+                    <input type="text" name="guardian_political[]" placeholder="政治面貌">
+                    <button type="button" class="remove-btn" onclick="removeGuardian(this)">删除</button>
+                </div>
+            </div>
+            <button type="button" id="addGuardianBtn">添加监护人</button>
+    </form>
+    <!-- JavaScript部分 -->
+<script>
+    // 动态添加监护人信息
+    document.getElementById('addGuardianBtn').addEventListener('click', function() {
+        const guardianContainer = document.getElementById('guardian-container');
+        const guardianGroup = document.createElement('div');
+        guardianGroup.classList.add('guardian-group');
+        
+        guardianGroup.innerHTML = `
+            <input type="text" name="guardian_name[]" placeholder="姓名">
+            <input type="text" name="guardian_phone[]" placeholder="电话">
+            <input type="text" name="guardian_relation[]" placeholder="关系">
+            <input type="text" name="guardian_occupation[]" placeholder="职业">
+            <input type="text" name="guardian_political[]" placeholder="政治面貌">
+            <button type="button" class="remove-btn" onclick="removeGuardian(this)">删除</button>
+        `;
+        
+        guardianContainer.appendChild(guardianGroup);
+    });
+
+    // 删除监护人信息
+    function removeGuardian(button) {
+        const guardianGroup = button.parentElement;
+        guardianGroup.remove();
+    }
+</script>
+</div>
+        <div class="form-group">
+            <label for="economicStatus">家庭经济情况:</label>
+            <textarea id="economicStatus" name="economicStatus" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group radio-group">
+            <label>是否属于留守儿童:</label>
+            <label for="leftBehindYes"><input type="radio" id="leftBehindYes" name="leftBehind" value="是"> 是</label>
+            <label for="leftBehindNo"><input type="radio" id="leftBehindNo" name="leftBehind" value="否"> 否</label>
+        </div>
+        
+        <div class="form-group">
+            <label for="onlyChild">是否为独生子女:</label>
+            <input type="text" id="onlyChild" name="onlyChild" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="familyEducation">家庭教育情况:</label>
+            <textarea id="familyEducation" name="familyEducation" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="academicPerformance">学业情况:</label>
+            <textarea id="academicPerformance" name="academicPerformance" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="badHabits">有无不良嗜好行为:</label>
+            <input type="text" id="badHabits" name="badHabits" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="healthStatus">健康情况:</label>
+            <textarea id="healthStatus" name="healthStatus" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="illnessHistory">有无重大患病史:</label>
+            <textarea id="illnessHistory" name="illnessHistory" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="chronicDisease">有无任何慢性病:</label>
+            <textarea id="chronicDisease" name="chronicDisease" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="physicalDefects">有无生理缺陷:</label>
+            <textarea id="physicalDefects" name="physicalDefects" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="selfRating">自我评分（1~10分）:</label>
+            <input type="number" id="selfRating" name="selfRating" min="1" max="10" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="behavior">行为表现:</label>
+            <textarea id="behavior" name="behavior" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="majorEvents">重大经历及事件:</label>
+            <textarea id="majorEvents" name="majorEvents" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="dropoutReason">失学、辍学等原因概述:</label>
+            <textarea id="dropoutReason" name="dropoutReason" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="consultationProcess">咨询过程:</label>
+            <textarea id="consultationProcess" name="consultationProcess" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="problemAnalysis">问题分析:</label>
+            <textarea id="problemAnalysis" name="problemAnalysis" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="consultationAdvice">咨询后建议:</label>
+            <textarea id="consultationAdvice" name="consultationAdvice" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="remarks">备注:</label>
+            <textarea id="remarks" name="remarks" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="date">时间:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="filler">填写人:</label>
+            <input type="text" id="filler" name="filler" required>
+        </div>
+
+        <button type="submit">提交</button>
+    </form>
+</div>
+
+</body>
+</html>
+

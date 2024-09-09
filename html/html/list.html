@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人员管理系统</title>
+    <link rel="stylesheet" href="css/style1.css">
+</head>
+<body>
+    <div class="container">
+        <h2>人员登记表</h2>
+        <!-- 人员登记表 -->
+        <form id="registrationForm">
+            <!-- 其他输入框省略，直接使用之前的代码 -->
+
+            <!-- 提交按钮 -->
+            <button type="button" id="submitBtn">保存人员信息</button>
+        </form>
+        
+        <!-- 新增的人员列表显示区域 -->
+        <h2>人员管理列表</h2>
+        <table id="personList">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                    <th>籍贯</th>
+                    <th>民族</th>
+                    <th>监护人</th>
+                    <th>描述</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 这里是人员信息的动态生成部分 -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

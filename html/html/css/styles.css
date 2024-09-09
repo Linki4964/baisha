@@ -1,0 +1,150 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+
+/* 家庭监护人部分样式 */
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="date"], input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+button {
+    display: inline-block;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* 新增部分：监护人部分布局调整 */
+.guardian-group { /* Flex布局，让每个监护人信息行水平排列 */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.guardian-group input[type="text"] { /* 设置监护人每个输入框的宽度与间距 */
+    width: calc(20% - 10px);  /* 每个输入框占据20%宽度，减去间距 */
+    margin-right: 5px; /* 输入框之间的右侧间距 */
+}
+
+/* 新增部分：删除按钮样式 */
+.remove-btn {
+    background-color: #ff4c4c; /* 红色背景 */
+    margin-left: 10px; /* 删除按钮与其他输入框的间距 */
+}
+
+.remove-btn:hover {
+    background-color: #e60000; /* 悬停时深红色 */
+}
+
+/* 新增部分：添加监护人按钮样式 */
+#addGuardianBtn {
+    background-color: #007bff; /* 蓝色背景 */
+    margin-top: 15px; /* 按钮与其他元素的间距 */
+}
+
+#addGuardianBtn:hover {
+    background-color: #0056b3; /* 悬停时深蓝色 */
+}
+.container {
+    width: 80%;
+    margin: 50px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group.inline {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group.inline input[type="text"],
+.form-group.inline input[type="number"] {
+    flex: 
+    1; margin-right: 10px; }
+
+    .form-group.inline input[type="text"]
+    { margin-right: 0; }
+    
+    .radio-group { display: flex; align-items: center; }
+    
+    .radio-group label { margin-right: 20px; }
+    
+    input[type="radio"] { margin-right: 5px; }
+    
+    textarea { resize: vertical; }
+    
+    button { display: block; width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; margin-top: 20px; }
+    
+    button
+    { background-color: #45a049; }
